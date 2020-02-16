@@ -171,7 +171,7 @@ RUN echo "$LOG_TAG install tini related packages" && \
   | tar x -C /usr/ \
   && mv /usr/zeppelin-${Z_VERSION}-bin-all ${Z_HOME} \
   && rm -rf /tmp/zeppelin-${Z_VERSION}-bin-all.tgz 
-    
+  && chown -R root:root $Z_HOME 
      
     
     RUN echo "$LOG_TAG Cleanup" && \
