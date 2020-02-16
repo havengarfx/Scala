@@ -154,7 +154,7 @@ USER root
 # `Z_VERSION` will be updated by `dev/change_zeppelin_version.sh`
 ENV Z_VERSION="0.8.2"
 ENV LOG_TAG="[ZEPPELIN_${Z_VERSION}]:" \
-    Z_HOME="/zeppelin" \
+    Z_HOME /usr/zeppelin \
     LANG=en_US.UTF-8 \
     LC_ALL=en_US.UTF-8
 
@@ -165,11 +165,13 @@ RUN echo "$LOG_TAG install tini related packages" && \
     dpkg -i tini.deb && \
     rm tini.deb
     
-   RUN echo "$LOG_TAG Download Zeppelin binary" && \
-    wget -O /usr/zeppelin-${Z_VERSION}-bin-all.tgz http://apachemirror.wuchna.com/zeppelin/zeppelin-${Z_VERSION}/zeppelin-${Z_VERSION}-bin-all.tgz && \
-    tar -zxvf /usr/zeppelin-${Z_VERSION}-bin-all.tgz && \
-    mv /usr/zeppelin-${Z_VERSION}-bin-all ${Z_HOME} && \
-    rm -rf /usr/zeppelin-${Z_VERSION}-bin-all.tgz 
+  RUN curl -sL --retry 3 \
+  "http://apachemirror.wuchna.com/zeppelin/zeppelin-${Z_VERSION}/zeppelin-${Z_VERSION}-bin-all.tgz" \
+  | gunzip \
+  | tar x -C /usr/ \
+  && mv /usr/zeppelin-${Z_VERSION}-bin-all ${Z_HOME} \
+  && rm -rf /tmp/zeppelin-${Z_VERSION}-bin-all.tgz 
+    
      
     
     RUN echo "$LOG_TAG Cleanup" && \
