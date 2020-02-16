@@ -122,34 +122,7 @@ RUN ln -s /usr/local/apache-hive-2.3.6-bin /usr/local/hive
 ENV HIVE_HOME /usr/local/apache-hive-2.3.6-bin
 ENV PATH $PATH:$HIVE_HOME/bin
 
-# `Z_VERSION` will be updated by `dev/change_zeppelin_version.sh`
-ENV Z_VERSION="0.8.2"
-ENV LOG_TAG="[ZEPPELIN_${Z_VERSION}]:" \
-    Z_HOME="/zeppelin" \
-    LANG=en_US.UTF-8 \
-    LC_ALL=en_US.UTF-8
 
-RUN echo "$LOG_TAG install tini related packages" && \
-    apt-get install -y wget curl grep sed dpkg && \
-    TINI_VERSION=`curl https://github.com/krallin/tini/releases/latest | grep -o "/v.*\"" | sed 's:^..\(.*\).$:\1:'` && \
-    curl -L "https://github.com/krallin/tini/releases/download/v${TINI_VERSION}/tini_${TINI_VERSION}.deb" > tini.deb && \
-    dpkg -i tini.deb && \
-    rm tini.deb
-    
-   RUN echo "$LOG_TAG Download Zeppelin binary" && \
-    wget -O /tmp/zeppelin-${Z_VERSION}-bin-all.tgz http://apachemirror.wuchna.com/zeppelin/zeppelin-${Z_VERSION}/zeppelin-${Z_VERSION}-bin-all.tgz && \
-    tar -zxvf /tmp/zeppelin-${Z_VERSION}-bin-all.tgz && \
-    mv /zeppelin-${Z_VERSION}-bin-all ${Z_HOME} && \
-    rm -rf /tmp/zeppelin-${Z_VERSION}-bin-all.tgz 
-     
-    
-    RUN echo "$LOG_TAG Cleanup" && \
-    apt-get autoclean && \
-    apt-get clean
-
-EXPOSE 8080
-
-ENTRYPOINT [ "/usr/bin/tini", "--" ]
     
 
 USER gitpod
@@ -178,5 +151,32 @@ USER root
 #RUN sudo /home/cloudera/cloudera-manager --express --force
 #RUN sudo systemctl start cloudera-scm-agent
 
+# `Z_VERSION` will be updated by `dev/change_zeppelin_version.sh`
+ENV Z_VERSION="0.8.2"
+ENV LOG_TAG="[ZEPPELIN_${Z_VERSION}]:" \
+    Z_HOME="/zeppelin" \
+    LANG=en_US.UTF-8 \
+    LC_ALL=en_US.UTF-8
 
+RUN echo "$LOG_TAG install tini related packages" && \
+    apt-get install -y wget curl grep sed dpkg && \
+    TINI_VERSION=`curl https://github.com/krallin/tini/releases/latest | grep -o "/v.*\"" | sed 's:^..\(.*\).$:\1:'` && \
+    curl -L "https://github.com/krallin/tini/releases/download/v${TINI_VERSION}/tini_${TINI_VERSION}.deb" > tini.deb && \
+    dpkg -i tini.deb && \
+    rm tini.deb
+    
+   RUN echo "$LOG_TAG Download Zeppelin binary" && \
+    wget -O /tmp/zeppelin-${Z_VERSION}-bin-all.tgz http://apachemirror.wuchna.com/zeppelin/zeppelin-${Z_VERSION}/zeppelin-${Z_VERSION}-bin-all.tgz && \
+    tar -zxvf /tmp/zeppelin-${Z_VERSION}-bin-all.tgz && \
+    mv /zeppelin-${Z_VERSION}-bin-all ${Z_HOME} && \
+    rm -rf /tmp/zeppelin-${Z_VERSION}-bin-all.tgz 
+     
+    
+    RUN echo "$LOG_TAG Cleanup" && \
+    apt-get autoclean && \
+    apt-get clean
+
+EXPOSE 8080
+
+ENTRYPOINT [ "/usr/bin/tini", "--" ]
 	
