@@ -1,0 +1,27 @@
+image:
+      file: .gitpod.dockerfile
+
+
+
+tasks:
+  
+ - command: mysql -e "SET PASSWORD FOR 'root'@'localhost' = PASSWORD ('Root123@');"
+ 
+
+
+
+
+vscode:
+  extensions:
+    - vector-of-bool.gitflow@1.2.1:PMW+5uFLySIkcokoRjBGQQ==
+    - vscjava.vscode-spring-initializr@0.4.6:WOgtgIwX3Ngy4pM9ArXjCQ==
+    - vscjava.vscode-spring-boot-dashboard@0.1.6:/G6fobfzYSrYZdNU7UB78g==
+    - Pivotal.vscode-spring-boot@1.12.0:jBoQhoPIn8lopj0vieWbMw==
+    - vscjava.vscode-maven@0.19.1:BvBDxQECRYP8SiCZ8Csrsg==
+    - vscode-icons-team.vscode-icons@9.5.0:dcvbiJm3ipHVkZXodLCtUA==
+    - Stephanvs.dot@0.0.1:3wd8tbdSQSWgI5qV/PByGQ==
+    - jhipster-ide.jdl@1.9.0:0vtSicgGD9g87TYsS128HQ==
+    - ignorethis.teste@2.1.2:1Erd3OvYagsvPs+6CRya0A==
+    - vscjava.vscode-java-test@0.21.0:vr2UsT4LMkbTgAUMk1uNvQ==
+    - lightbend.vscode-sbt-scala@0.2.4:SV88QZ84NLmBVc7+B/QoUw==
+    - scala-lang.scala@0.3.9:kklqw+c/dNRmtTU8B5repw==
