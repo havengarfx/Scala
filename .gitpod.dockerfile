@@ -154,7 +154,7 @@ USER root
 # `Z_VERSION` will be updated by `dev/change_zeppelin_version.sh`
 ENV Z_VERSION="0.8.2"
 ENV LOG_TAG="[ZEPPELIN_${Z_VERSION}]:" \
-    Z_HOME /usr/zeppelin \
+    Z_HOME="/usr/zeppelin" \
     LANG=en_US.UTF-8 \
     LC_ALL=en_US.UTF-8
 
