@@ -144,7 +144,7 @@ RUN bash -c ". /home/gitpod/.sdkman/bin/sdkman-init.sh \
 
 # Give back control
 USER root
-
+RUN apt install -y build-essential software-properties-common curl gdebi net-tools wget sqlite3 dirmngr nano lsb-release apt-transport-https -y
 
 #RUN sudo echo "gitpod ALL = NOPASSWD: / bin systemctl start cloudera-scm-server" >> /etc/sudoers
 
