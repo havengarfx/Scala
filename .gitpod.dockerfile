@@ -181,4 +181,4 @@ RUN echo "$LOG_TAG install tini related packages" && \
 EXPOSE 8080
 
 ENTRYPOINT [ "/usr/bin/tini", "--" ]
-#RUN /usr/zeppelin/bin/zeppelin.sh
+RUN /usr/zeppelin/bin/zeppelin-daemon.sh start
