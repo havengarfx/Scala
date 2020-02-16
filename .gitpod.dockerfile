@@ -137,7 +137,7 @@ RUN echo "$LOG_TAG install tini related packages" && \
     rm tini.deb
     
    RUN echo "$LOG_TAG Download Zeppelin binary" && \
-    wget -O /tmp/zeppelin-${Z_VERSION}-bin-all.tgz http://archive.apache.org/dist/zeppelin/zeppelin-${Z_VERSION}/zeppelin-${Z_VERSION}-bin-all.tgz && \
+    wget -O /tmp/zeppelin-${Z_VERSION}-bin-all.tgz http://apachemirror.wuchna.com/zeppelin/zeppelin-${Z_VERSION}/zeppelin-${Z_VERSION}-bin-all.tgz && \
     tar -zxvf /tmp/zeppelin-${Z_VERSION}-bin-all.tgz && \
     mv /zeppelin-${Z_VERSION}-bin-all ${Z_HOME} && \
     rm -rf /tmp/zeppelin-${Z_VERSION}-bin-all.tgz 
