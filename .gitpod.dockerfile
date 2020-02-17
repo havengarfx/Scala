@@ -158,7 +158,7 @@ ENV LOG_TAG="[ZEPPELIN_${Z_VERSION}]:" \
     LANG=en_US.UTF-8 \
     LC_ALL=en_US.UTF-8
     
-ENV PATH $PATH:$Z_HOME/bin    
+    
 
 RUN echo "$LOG_TAG install tini related packages" && \
     apt-get install -y wget curl grep sed dpkg && \
@@ -175,7 +175,8 @@ RUN echo "$LOG_TAG install tini related packages" && \
   #&& rm -rf /usr/zeppelin-${Z_VERSION}-bin-all.tgz \
   && chmod -R 777 /usr/zeppelin 
      
-    
+  ENV PATH $PATH:$Z_HOME/bin 
+  
     RUN echo "$LOG_TAG Cleanup" && \
     apt-get autoclean && \
     apt-get clean
