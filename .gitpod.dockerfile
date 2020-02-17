@@ -174,8 +174,8 @@ RUN echo "$LOG_TAG install tini related packages" && \
   && mv /usr/zeppelin-${Z_VERSION}-bin-all ${Z_HOME} \
   #&& rm -rf /usr/zeppelin-${Z_VERSION}-bin-all.tgz \
   && chown -R gitpod:gitpod /usr/zeppelin \
-  && chmod -R /usr/zeppelin/logs \
-  && chmod -R /usr/zeppelin/run   
+  && chmod -R 777 /usr/zeppelin/logs \
+  && chmod -R 777 /usr/zeppelin/run   
   
   ENV PATH $PATH:$Z_HOME/bin 
   
