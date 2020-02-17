@@ -158,7 +158,7 @@ ENV LOG_TAG="[ZEPPELIN_${Z_VERSION}]:" \
     LANG=en_US.UTF-8 \
     LC_ALL=en_US.UTF-8
     
-ENV PATH $PATH:${Z_HOME}/bin    
+ENV PATH $PATH:$Z_HOME/bin    
 
 RUN echo "$LOG_TAG install tini related packages" && \
     apt-get install -y wget curl grep sed dpkg && \
