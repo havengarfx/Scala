@@ -173,8 +173,10 @@ RUN echo "$LOG_TAG install tini related packages" && \
   | tar x -C /usr/ \
   && mv /usr/zeppelin-${Z_VERSION}-bin-all ${Z_HOME} \
   #&& rm -rf /usr/zeppelin-${Z_VERSION}-bin-all.tgz \
-  && chown -R gitpod:gitpod /usr/zeppelin 
-     
+  && chown -R gitpod:gitpod /usr/zeppelin \
+  && chmod -R /usr/zeppelin/logs \
+  && chmod -R /usr/zeppelin/run   
+  
   ENV PATH $PATH:$Z_HOME/bin 
   
     RUN echo "$LOG_TAG Cleanup" && \
