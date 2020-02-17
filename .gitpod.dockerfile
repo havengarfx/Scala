@@ -173,7 +173,7 @@ RUN echo "$LOG_TAG install tini related packages" && \
   | tar x -C /usr/ \
   && mv /usr/zeppelin-${Z_VERSION}-bin-all ${Z_HOME} \
   #&& rm -rf /usr/zeppelin-${Z_VERSION}-bin-all.tgz \
-  && chown -R gitpod:gitpod /usr/zeppelin \
+  #&& chown -R gitpod:gitpod /usr/zeppelin \
   && mkdir /usr/zeppelin/logs \
   && chmod -R 777 /usr/zeppelin/logs \
   && mkdir /usr/zeppelin/run \
@@ -188,4 +188,4 @@ RUN echo "$LOG_TAG install tini related packages" && \
 EXPOSE 8080
 
 ENTRYPOINT [ "/usr/bin/tini", "--" ]
-RUN /usr/zeppelin/bin/zeppelin-daemon.sh start
+#RUN /usr/zeppelin/bin/zeppelin-daemon.sh start
