@@ -48,9 +48,9 @@ RUN curl -sL --retry 3 \
   "http://archive.apache.org/dist/hadoop/common/hadoop-2.9.0//hadoop-2.9.0.tar.gz" \
   | gunzip \
   | tar -x -C /usr/local/
-RUN cd /usr/local && ln -s ./hadoop-2.9.0 hadoop
+#RUN cd /usr/local && ln -s ./hadoop-2.9.0 hadoop
 
-ENV HADOOP_HOME /usr/local/hadoop
+ENV HADOOP_HOME /usr/local/hadoop-2.9.0
 ENV HDFS_NAMENODE_USER root
 ENV HDFS_DATANODE_USER root
 ENV HDFS_SECONDARYNAMENODE_USER root
@@ -60,7 +60,7 @@ ENV HADOOP_COMMON_HOME $HADOOP_HOME
 ENV HADOOP_HDFS_HOME $HADOOP_HOME
 ENV HADOOP_MAPRED_HOME $HADOOP_HOME
 ENV HADOOP_YARN_HOME $HADOOP_HOME
-ENV HADOOP_CONF_DIR /usr/local/hadoop/etc/hadoop
+ENV HADOOP_CONF_DIR /usr/local/hadoop-2.9.0/etc/hadoop
 
 
 RUN echo "JAVA_HOME=$JAVA_HOME" >> $HADOOP_HOME/etc/hadoop/hadoop-env.sh
