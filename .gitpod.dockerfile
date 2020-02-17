@@ -40,8 +40,8 @@ RUN apt-get update && \
 #RUN sudo apt-get update
 #RUN sudo apt-get install cloudera-manager-daemons cloudera-manager-server
 # download native support
-RUN mkdir -p /tmp/native
-RUN curl -L https://github.com/dvoros/docker-hadoop-build/releases/download/v2.9.0/hadoop-native-64-2.9.0.tgz | tar -xz -C /tmp/native
+#RUN mkdir -p /tmp/native
+#RUN curl -L https://github.com/dvoros/docker-hadoop-build/releases/download/v2.9.0/hadoop-native-64-2.9.0.tgz | tar -xz -C /tmp/native
 
 # hadoop
 RUN curl -sL --retry 3 \
@@ -71,8 +71,8 @@ RUN cp $HADOOP_HOME/etc/hadoop/*.xml $HADOOP_HOME/input
 
 
 # fixing the libhadoop.so like a boss
-RUN rm -rf /usr/local/hadoop-2.9.0/lib/native
-RUN mv /tmp/native /usr/local/hadoop-2.9.0/lib
+#RUN rm -rf /usr/local/hadoop-2.9.0/lib/native
+#RUN mv /tmp/native /usr/local/hadoop-2.9.0/lib
 
 
 
