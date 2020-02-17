@@ -170,7 +170,7 @@ RUN echo "$LOG_TAG install tini related packages" && \
   | gunzip \
   | tar x -C /usr/ \
   && mv /usr/zeppelin-${Z_VERSION}-bin-all ${Z_HOME} \
-  && rm -rf /usr/zeppelin-${Z_VERSION}-bin-all.tgz \
+  #&& rm -rf /usr/zeppelin-${Z_VERSION}-bin-all.tgz \
   && chmod -R 777 /usr/zeppelin 
      
     
