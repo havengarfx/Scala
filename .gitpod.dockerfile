@@ -69,7 +69,7 @@ RUN echo "HADOOP_HOME=$HADOOP_HOME" >> $HADOOP_HOME/etc/hadoop/hadoop-env.sh
 
 RUN mkdir $HADOOP_HOME/input
 RUN cp $HADOOP_HOME/etc/hadoop/*.xml $HADOOP_HOME/input
-
+RUN chmod -R 777 /usr/local/hadoop-2.9.0
 
 # fixing the libhadoop.so like a boss
 #RUN rm -rf /usr/local/hadoop-2.9.0/lib/native
