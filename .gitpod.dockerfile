@@ -80,8 +80,8 @@ RUN chmod -R 777 /usr/local/hadoop-2.9.0
 # Make Hadoop executables available on PATH
 ENV PATH $PATH:$HADOOP_HOME/bin
 
-
-
+RUN chmod -R 777 /run
+RUN chmod -R 777 /etc
 
 # Hdfs ports
 EXPOSE 50010 50020 50070 50075 50090 8020 9000
