@@ -11,17 +11,16 @@ RUN apt-get update && apt-get install -y \
 	graphviz \
 	&& apt-get clean && rm -rf /var/cache/apt/* && rm -rf /var/lib/apt/lists/* && rm -rf /tmp/*
 
-RUN apt-get update && apt-get install -y openssh-server openssh-client
-RUN mkdir /var/run/sshd
-RUN sed -i 's/PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
+RUN \
+  apt-get update && apt-get install -y \
+  ssh \
+  rsync \
+  vim \
 
-# SSH login fix. Otherwise user is kicked off after login
-RUN sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd
-
-ENV NOTVISIBLE "in users profile"
-RUN echo "export VISIBLE=now" >> /etc/profile
-
-EXPOSE 22
+RUN \
+  ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsa && \
+  cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys && \
+  chmod 0600 ~/.ssh/authorized_keys
 
 RUN apt-get update && \
 	apt-get install -y openjdk-8-jdk && \
