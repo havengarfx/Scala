@@ -147,7 +147,7 @@ RUN \
   cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys && \
   chmod 0600 ~/.ssh/authorized_keys
 
-
+RUN sudo chmod g+s /etc/init.d
 
 # Apply user-specific settings
 	RUN bash -c "npm install -g generator-jhipster \
