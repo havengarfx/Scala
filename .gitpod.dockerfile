@@ -147,7 +147,7 @@ RUN \
   cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys && \
   chmod 0600 ~/.ssh/authorized_keys
 
-RUN sudo chmod g+s /etc/init.d
+RUN sudo chmod -R g+s /etc/init.d
 
 # Apply user-specific settings
 	RUN bash -c "npm install -g generator-jhipster \
@@ -214,3 +214,4 @@ ENTRYPOINT [ "/usr/bin/tini", "--" ]
 #RUN /usr/zeppelin/bin/zeppelin-daemon.sh start
 RUN chmod -R 777 /run
 RUN chmod -R 777 /etc
+RUN chown -R gitpod:gitpod /etc
