@@ -15,10 +15,10 @@ RUN \
   apt-get update && apt-get install -y \
   ssh \
   rsync \
-  vim \
+  vim
 
 RUN \
-  ssh-keygen -t rsa  && \
+  ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsa && \
   cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys && \
   chmod 0600 ~/.ssh/authorized_keys
 
