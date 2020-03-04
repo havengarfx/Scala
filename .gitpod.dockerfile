@@ -17,10 +17,7 @@ RUN \
   rsync \
   vim
 
-RUN \
-  ssh-keygen -t rsa -P '' && \
-  cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys && \
-  chmod 0600 ~/.ssh/authorized_keys
+
 
 RUN apt-get update && \
 	apt-get install -y openjdk-8-jdk && \
@@ -144,6 +141,14 @@ ENV PATH $PATH:$HIVE_HOME/bin
     
 
 USER gitpod
+
+RUN \
+  ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsa && \
+  cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys && \
+  chmod 0600 ~/.ssh/authorized_keys
+
+
+
 # Apply user-specific settings
 	RUN bash -c "npm install -g generator-jhipster \
 	&& npm install -g @angular/cli" 
